@@ -1,3 +1,5 @@
+import java.lang.Math;
+
 public class Location {
     static double latitude;
     static double longitude;
@@ -8,22 +10,31 @@ public class Location {
     }
 
     static String getLatitude() {
-        return latitude + (latitude<0 ? " S" : " N");
+        return Math.abs(latitude) + (latitude<0 ? " S" : " N");
     }
 
     static String getLongitude() {
-        return longitude + (longitude<0 ? " W" : " E");
+        return Math.abs(longitude) + (longitude<0 ? " W" : " E");
     }
+    
     public static void main(String[] args) {
         System.out.println("Setting coordinates numerically: " + 26.84 + ", " + 80.94);
         setCoordinates(26.84, 80.94);
-        System.out.println("Printing directions based on coordinates");
+        System.out.println("Printing direction based coordinates");
         System.out.println(getLatitude() + ", " + getLongitude());
     }
 }
 
+// Question: Justify which Java concept is used in this program.
+
+// Answer: 
+// The concept of Encapsulation is used here, as:
+// 1) all data regarding location of an unmanned vehicle (latitude and longitude) 
+// 2) the methods for getting and setting this data
+// are wrapped up into this one Location class
+
 // Output
 
 // Setting coordinates numerically: 26.84, 80.94
-// Printing directions based on coordinates
+// Printing direction based coordinates
 // 26.84 N, 80.94 E
