@@ -31,7 +31,10 @@ public class Location {
 // The concept of Encapsulation is used here, as:
 // 1) all data regarding location of an unmanned vehicle (latitude and longitude) 
 // 2) the methods for getting and setting this data
-// are wrapped up into this one Location class
+// are wrapped up into this one Location class.
+// Abstraction is also used because:
+// 1) the location getters returns data in a different format (string) from which it was set (double)
+// 2) The details of formatting the returned value (computing direction) are hidden from the user
 
 // Output
 
