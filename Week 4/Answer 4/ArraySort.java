@@ -1,23 +1,10 @@
 import java.util.Arrays;
 
 class ArraySort {
-    int[] myArr;
-    boolean error;
 
-    ArraySort(int[] myArr) {
-        this.myArr = new int[10];
-        error = false;
-        try {
-            if(myArr.length!=10) 
-            throw new IllegalArgumentException("Array passed must have exactly 10 elements, but this has " + myArr.length + " elements.");
-            this.myArr = myArr;
-        } catch (Exception e) {
-            System.out.println(e);
-            error = true;
-        }
-    }
-
-    void sort() {
+    static void sort(int[] myArr) throws Exception {
+        if(myArr.length!=10) 
+        throw new IllegalArgumentException("Array passed must have exactly 10 elements, but this has " + myArr.length + " elements.");
         Arrays.sort(myArr);
         for (int i : myArr) {
             System.out.print(i + " ");
@@ -28,15 +15,24 @@ class ArraySort {
         int[] tooShortArray = {5,4,3,2,1};
         int[] rightSizeArray = {10,9,8,7,6,5,4,3,2,1};
         int[] tooLongArray = {15,14,13,12,11,10,9,8,7,6,5,4,3,2,1};
-        System.out.println("Trying to sort an array that's too short...");
-        ArraySort shorter = new ArraySort(tooShortArray);
-        if(!shorter.error) shorter.sort();
-        System.out.println("Trying to sort an array that's the correct length...");
-        ArraySort right = new ArraySort(rightSizeArray);
-        if(!right.error) right.sort();
-        System.out.println("Trying to sort an array that's too long...");
-        ArraySort longer = new ArraySort(tooLongArray);
-        if(!longer.error) longer.sort();
+        try {
+            System.out.println("Trying to sort an array that's too short...");
+            ArraySort.sort(tooShortArray);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            System.out.println("Trying to sort an array that's the correct length...");
+            ArraySort.sort(rightSizeArray);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            System.out.println("Trying to sort an array that's too long...");
+            ArraySort.sort(tooLongArray);            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     } 
 }
 
